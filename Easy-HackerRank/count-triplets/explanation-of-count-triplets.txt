@@ -1,0 +1,22 @@
+Here is the complete logic to help anyone :
+
+Let's take an example to undertsand the core concept behind this problem : {1, 3, 3, 9, 3, 27, 81} . 
+Let common ratio = 3.
+
+1.We will consider every element to be our middle element during our iteration. For any such element a, the number 
+of possible geometric pairs possible are, no. of a/r on the left of a x no. of axr on the right of a.
+
+2.Lets take 9 as our element. 9/3 = 3. 9x3 = 27. The number of 3s present on left of 9 are 2. The number of 27s 
+present on right of 9 is 1. Hence total no. of geometric pairs possible with 9 as the middle element is 2x1 = 2. 
+Do this for all the elements and add them up to get the result.
+
+3.We create an occurence map first and call it rightMap. Now for each element, we first decrement it's count by 1 
+from the rightMap. Now we check for the number of occurences of axr in the rightMap. ( Let me explain this step 
+with a simple example , say the input is {1,1,1,1 } and ratio = 1, rightMap will be [1->4]. Now we need to check 
+the number of times axr = 1 occurs on the right of a. We do this after decrementing the count of current value 
+by 1 in the rightMap. So rightMap becomes [1->3] . 3 is the number of times aXr occurs on RHS of first 1 )
+
+4.Now we check for a/r counts in left map. We multiply leftCount and rightCount and add them up for each element. 
+The whole idea is that, for each element , leftMap contains the occurence map of the elements on the 
+left of a and rightMap contains the occurence map of the elements on the right of a.
+
